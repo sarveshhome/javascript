@@ -1,6 +1,6 @@
 # javascript
 
-
+`
 or create a new repository on the command line
 
 echo "# javascript" >> README.md
@@ -12,4 +12,4 @@ git push -u origin master
 …or push an existing repository from the command line
 
 git remote add origin https://github.com/sarveshhome/javascript.git
-git push -u origin master
+git push -u origin master`
