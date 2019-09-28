@@ -23,7 +23,7 @@ function Customer()
      }
      
      this.submit = function(){
-            console.log("Submit " + this._CustomerName + " " + this._CustomerCode);
+            console.log("Submit " + _CustomerName + " " + _CustomerCode);
      }
 
 
