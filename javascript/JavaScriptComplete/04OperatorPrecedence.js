@@ -19,7 +19,7 @@ console.log(average);
 
 //Multiple assignments
 var x,y;
-x = y = (3 + 5) * 4 - 6;
+x = y = (3 + 5) * 4 - 6;        //8 * 4 - 6 //32 - 6 // 26
 
 console.log(x,y);
 
@@ -31,7 +31,23 @@ console.log('x multiple : '+x);
 x = x +1;
 x+=1;
 x++;
-console.log('Assignments right  to left : '+ x);
+console.log('Increment right  to left : '+ x);
 
 x--;
-console.log('minus operator right to left : '+ x);
+console.log('Decrement operator right to left : '+ x);
+
+var z;
+z = 2 ** 3;
+console.log('Exponentiation ** ' + z);
+
+/**
+ *
++	Addition
+-	Subtraction
+*	Multiplication
+**	Exponentiation (ES2016)
+/	Division
+%	Modulus (Remainder)
+++	Increment
+--	Decrement
+ */
