@@ -1,0 +1,7 @@
+/*************************************
+ * Functions
+ */
+
+ function calculateAge(birthday){
+
+ }
