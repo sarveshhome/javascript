@@ -1,7 +1,7 @@
 /***********************
  * this keyword
  ***********************/
-/*
+
  console.log(this);
 
  calculateAge(1996);
@@ -11,7 +11,7 @@
     console.log(this);
  }
 
- */
+ 
 
  var sarvesh = {
      name:'sarvesh',
@@ -29,3 +29,12 @@
  }
 
  sarvesh.calculateAge();
+
+ var kumar = {
+        name: 'kumar',
+        yearofBirth:1997
+ };
+
+ kumar.calculateAge = sarvesh.calculateAge;   //calling calculateAge as a variable
+
+ console.log(kumar.calculateAge());
