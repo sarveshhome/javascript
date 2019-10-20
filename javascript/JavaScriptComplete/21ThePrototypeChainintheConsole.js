@@ -1,7 +1,11 @@
 /******************************************
  * The Prototype Chain in the Console
  *********************************/
-
+var sarvesh ={
+    name:'sarvesh',
+    yearofBirth: 1989,
+    job:'ITProf'
+}
 
 var Person = function(name,yearofBirth,job){
     this.name = name;
@@ -28,3 +32,6 @@ console.log('sarvesh.__proto__.__proto__   : ' + sarvesh.__proto__.__proto__);
 console.log('sarvesh.__proto__   : ' + sarvesh.__proto__);
 
 console.log('sarvesh.hasOwnProperty(\'job\') : ' + sarvesh.hasOwnProperty('job'));
+console.log('sarvesh.hasOwnProperty(\'lastName\') : ' + sarvesh.hasOwnProperty('lastName'));
+
+console.log('sarvesh instanceof  Person : '+ sarvesh instanceof  Person);
