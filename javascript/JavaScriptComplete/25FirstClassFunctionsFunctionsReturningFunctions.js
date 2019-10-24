@@ -34,4 +34,4 @@ ITProfQuestion('rahul');
 ITProfQuestion('tarun');
 ITProfQuestion('shashi');
 
-interviewQuestion('Tester')('ada lovelace');
+interviewQuestion('mathematician')('ada lovelace');
