@@ -23,15 +23,10 @@ var controller = (function(budgetCtrl,UICtrl){
 
         //5. Display the budget on the UI
         console.log('Add Item Function Work');
-
     };
     
-    document.querySelector('.add__btn').addEventListener('click',ctrlAddItem);
+    document.querySelector('.add__btn').addEventListener('click',ctrlAddItem);    
 
-    //https://developer.mozilla.org/en-US/docs/Web/Events
-    //Keyboard events
-    //http://keycodes.atjayjo.com/#charcode
-    
     document.addEventListener('keypress',function(event){
         console.log(event);
         if (event.keyCode ===13 || event.which === 13) {
@@ -40,3 +35,12 @@ var controller = (function(budgetCtrl,UICtrl){
     });
 
 })(budgetController,UIController);
+
+
+
+
+
+
+//https://developer.mozilla.org/en-US/docs/Web/Events
+    //Keyboard events
+    //http://keycodes.atjayjo.com/#charcode
