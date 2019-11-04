@@ -64,8 +64,39 @@ var UIController = (function(){
             inputType :'.add__type',
             inputDescription : '.add__description',
             inputValue : '.add__value',
-            inputBtn : '.add__btn'
-        }
+            inputBtn : '.add__btn',
+            incomeContainer: '.income__list',
+            expensesContainer: '.expenses__list'
+        };
+        var formatNumber = function(num, type) {
+            var numSplit, int, dec, type;
+            /*
+                + or - before number
+                exactly 2 decimal points
+                comma separating the thousands
+    
+                2310.4567 -> + 2,310.46
+                2000 -> + 2,000.00
+                */
+    
+            num = Math.abs(num);
+            num = num.toFixed(2);
+    
+            numSplit = num.split('.');
+    
+            int = numSplit[0];
+            if (int.length > 3) {
+                int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3); //input 23510, output 23,510
+            }
+    
+            dec = numSplit[1];
+    
+            return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
+    
+        };
+    
+
+        
 
         return {
             getInputs : function(){
@@ -79,6 +110,29 @@ var UIController = (function(){
                 // var value  = document.querySelector('.add__value').value; //value
 
             },
+            addListItem: function(obj, type) {
+                var html, newHtml, element;
+                // Create HTML string with placeholder text
+                
+                if (type === 'inc') {
+                    element = DOMstring.incomeContainer;
+                    
+                    html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                } else if (type === 'exp') {
+                    element = DOMstring.expensesContainer;
+                    
+                    html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                }
+                
+                // Replace the placeholder text with some actual data
+                newHtml = html.replace('%id%', obj.id);
+                newHtml = newHtml.replace('%description%', obj.description);
+                newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
+                
+                // Insert the HTML into the DOM
+                document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+            },
+           
             getDOMString : function(){
                 return DOMstring;
             }
@@ -118,7 +172,7 @@ var controller = (function(budgetCtrl,UICtrl){
         newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
         //3. Add the item to the UI
-
+        UICtrl.addListItem(newItem, input.type);
         //4. Calculate the budget 
 
         //5. Display the budget on the UI
