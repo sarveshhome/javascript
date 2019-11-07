@@ -5,13 +5,21 @@ var budgetController = (function(){
             this.id = id;
             this.description = description;
             this.value = value;
-    }
+    };
 
     var Income  = function(id,description,value){
         this.id = id;
         this.description = description;
         this.value = value;
-    }
+    };
+
+    var calculateTotal= function(type){
+        var sum =0;
+        data.allItems[type].forEach(function(cur){
+            sum +=  cur.value;
+        });
+        data.totals[type] = sum;
+    };
 
     var data ={
         allItems:{
@@ -21,7 +29,9 @@ var budgetController = (function(){
         totals :{
             exp:0,
             inc: 0
-        }
+        },
+        budget:0,
+        percentage:-1
     };
 
     return {
@@ -50,7 +60,25 @@ var budgetController = (function(){
                 //Return the new element
                 return newItem;
 
-        },
+        },    
+        calculateBudget: function(){
+            //calculate total income and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
+            //Calculate the budget : income - expenses
+            data.budget = data.totals.inc - data.totals.exp;
+
+            //calculate the percentage of income that we spent
+            data.percentage = (data.totals.inc / data.totals.exp) * 100;
+        },  
+        getBudget : function(){
+            return {
+                budget :data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage
+            };
+        },  
         testing : function(){
             console.log(data);
         }
@@ -94,10 +122,6 @@ var UIController = (function(){
             return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     
         };
-    
-
-        
-
         return {
             getInputs : function(){
                 return {
@@ -144,12 +168,12 @@ var UIController = (function(){
 
                 fieldsArr[0].focus();
 
-            },
+            },            
+            
             getDOMString : function(){
                 return DOMstring;
             }
-        };
-        
+        };        
 })();
 
 
@@ -173,13 +197,12 @@ var controller = (function(budgetCtrl,UICtrl){
 
    var updateBudget =   function(){
             //1. Calculate the budget 
-
-
+            budgetCtrl.calculateBudget();
             //2. Return the budget
-
+            var budget = budgetCtrl.getBudget();
             //3. Display the budget on the UI
-            
-    }
+            console.log(budget);      
+    };
 
 
     var ctrlAddItem = function(){
@@ -196,11 +219,9 @@ var controller = (function(budgetCtrl,UICtrl){
             //4. Clear field
             UICtrl.clearFields();
             //5. udate budget
-            updateBudget();
-            
+            updateBudget();            
         }        
-    }
-    
+    }    
     return {
         init : function(){
             console.log('Application has started.');
@@ -209,7 +230,6 @@ var controller = (function(budgetCtrl,UICtrl){
     };
 
 })(budgetController,UIController);
-
 
 controller.init();
 
