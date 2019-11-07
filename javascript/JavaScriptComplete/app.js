@@ -73,8 +73,7 @@ var budgetController = (function(){
                 data.percentage =Math.round((data.totals.inc / data.totals.exp) * 100);    
             } else {
                 data.percentage =-1;
-            }
-            
+            }            
         },  
         getBudget : function(){
             return {
@@ -99,7 +98,11 @@ var UIController = (function(){
             inputValue : '.add__value',
             inputBtn : '.add__btn',
             incomeContainer: '.income__list',
-            expensesContainer: '.expenses__list'
+            expensesContainer: '.expenses__list',
+            budgetLabal:'.budget__value',
+            incomeLabal:'.budget__income--value',
+            expensesLabal:'.budget__expenses--value',
+            percentageLabal :'.budget__expenses--percentage'
         };
         var formatNumber = function(num, type) {
             var numSplit, int, dec, type;
@@ -174,7 +177,12 @@ var UIController = (function(){
                 fieldsArr[0].focus();
 
             },            
-            
+            displayBudget: function(obj){
+                document.querySelector(DOMstring.budgetLabal).textContent = obj.budget;
+                document.querySelector(DOMstring.incomeLabal).textContent = obj.totalInc;
+                document.querySelector(DOMstring.expensesLabal).textContent = obj.totalExp;
+                document.querySelector(DOMstring.percentageLabal).textContent = obj.percentage;                
+            },
             getDOMString : function(){
                 return DOMstring;
             }
@@ -207,6 +215,7 @@ var controller = (function(budgetCtrl,UICtrl){
             var budget = budgetCtrl.getBudget();
             //3. Display the budget on the UI
             console.log(budget);      
+            UICtrl.displayBudget(budget);
     };
 
 
