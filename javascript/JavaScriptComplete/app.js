@@ -159,6 +159,11 @@ var UIController = (function(){
             return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     
         };
+        var nodeListForEach = function(list, callback) {
+            for (var i = 0; i < list.length; i++) {
+                callback(list[i], i);
+            }
+        };
         return {
             getInputs : function(){
                 return {
@@ -208,24 +213,24 @@ var UIController = (function(){
                 });
                 fieldsArr[0].focus();
             },            
-             displayBudget: function(obj) {
-            var type;
-            obj.budget > 0 ? type = 'inc' : type = 'exp';
+            displayBudget: function(obj) {
+                    var type;
+                    obj.budget > 0 ? type = 'inc' : type = 'exp';
+                    
+                    document.querySelector(DOMstring.budgetLabal).textContent = formatNumber(obj.budget, type);
+                    document.querySelector(DOMstring.incomeLabal).textContent = formatNumber(obj.totalInc, 'inc');
+                    document.querySelector(DOMstring.expensesLabal).textContent = formatNumber(obj.totalExp, 'exp');
+                    
+                    if (obj.percentage > 0) {
+                        document.querySelector(DOMstring.percentageLabal).textContent = obj.percentage + '%';
+                    } else {
+                        document.querySelector(DOMstring.percentageLabal).textContent = '---';
+                    }
             
-            document.querySelector(DOMstring.budgetLabal).textContent = formatNumber(obj.budget, type);
-            document.querySelector(DOMstring.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
-            document.querySelector(DOMstring.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
-            
-            if (obj.percentage > 0) {
-                document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
-            } else {
-                document.querySelector(DOMstrings.percentageLabel).textContent = '---';
-            }
-            
-        },
+            },
             displayPercentages: function(percentages) {
             
-                var fields = document.querySelectorAll(DOMstrings.expensesPercLabel);
+                var fields = document.querySelectorAll(DOMstring.expensesPercLabel);
                 
                 nodeListForEach(fields, function(current, index) {
                     
