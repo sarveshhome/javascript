@@ -240,7 +240,13 @@ var UIController = (function(){
                         current.textContent = '---';
                     }
                 });                
-            },            
+            },    
+            displayMonth: function(){
+                var now, year;
+                now = new Date();
+                year = now.getFullYear();
+                document.querySelector(DOMstring.dateLabel).textContent = year; 
+            },        
             getDOMString : function(){
                 return DOMstring;
             }
@@ -334,6 +340,7 @@ var controller = (function(budgetCtrl,UICtrl){
                 totalExp: 0,
                 percentage: -1
             });
+            UICtrl.displayMonth();
             setupEventListeners();
         }
     };
