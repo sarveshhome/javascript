@@ -240,7 +240,23 @@ var UIController = (function(){
                         current.textContent = '---';
                     }
                 });                
-            },            
+            },    
+            displayMonth: function(){
+                var now, year;
+                now = new Date();
+                year = now.getFullYear();
+                document.querySelector(DOMstring.dateLabel).textContent = year; 
+            },        
+            changeType : function(){
+                var fields= document.querySelectorAll(DOMstring.inputType +',' +
+                DOMstring.inputDescription +','+
+                DOMstring.inputValue);
+
+                nodeListForEach(fields,function(cur){
+                    cur.classList.toggle('red-focus');
+                });                
+                document.querySelector(DOMstring.inputBtn).classList.toggle('red');
+            },
             getDOMString : function(){
                 return DOMstring;
             }
@@ -263,6 +279,7 @@ var controller = (function(budgetCtrl,UICtrl){
         });
 
         document.querySelector(DOM.container).addEventListener('click',ctrlDeleteItem);
+        document.querySelector(DOM.inputType).addEventListener('change',UICtrl.changeType);
     };
 
    var updateBudget =   function(){
@@ -334,6 +351,7 @@ var controller = (function(budgetCtrl,UICtrl){
                 totalExp: 0,
                 percentage: -1
             });
+            UICtrl.displayMonth();
             setupEventListeners();
         }
     };
