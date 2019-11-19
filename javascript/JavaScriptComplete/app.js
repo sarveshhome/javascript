@@ -57,8 +57,7 @@ var budgetController = (function(){
                 else    
                 {
                     ID =0;                    
-                }
-                
+                }                
                 //create new item based on 'inc' or 'exp' type                
                 if (type ==='exp') {
                     newItem =new Expense(ID,des,val);
@@ -263,8 +262,6 @@ var UIController = (function(){
         };        
 })();
 
-
-
 //Global APP Controller
 var controller = (function(budgetCtrl,UICtrl){
     var setupEventListeners = function() {
@@ -359,8 +356,6 @@ var controller = (function(budgetCtrl,UICtrl){
 })(budgetController,UIController);
 
 controller.init();
-
-
 
 //https://developer.mozilla.org/en-US/docs/Web/Events
 //Keyboard events
