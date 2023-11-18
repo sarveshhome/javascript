@@ -40,3 +40,33 @@ const user= {
 // }
 
 //Test();
+
+
+/******arrow function */
+
+//const Test= ()=> {}
+
+//Explicit return
+// const Test= (nubmer1, number2)=> {
+//     return nubmer1 + number2;
+// }
+
+
+//Implicit Return, single line
+//const Test= (nubmer1, number2)=> (nubmer1 + number2)
+
+// parenthesis use in react
+//Note: if you use {}  then return must be use,,,other wise use parenthesis
+
+//Implicit Return, Multi line
+// const Test= (nubmer1, number2)=> (
+//      nubmer1 + number2
+// )
+
+//Implicit Return, Issue retrun Object
+//const Test= (nubmer1, number2)=> {nubmer1 + number2}   //undefined
+
+//Implicit Return, Issue retrun Object
+const Test= (nubmer1, number2) => ({ value: nubmer1 + number2 })
+
+console.log(Test(7,9));
