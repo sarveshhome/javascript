@@ -22,10 +22,21 @@ const user= {
 }
 
 //user.displayInfo;
-user.displayInfo();
-user.username ="gopal";
-user.displayInfo();
+
+// user.displayInfo();
+// user.username ="gopal";
+// user.displayInfo();
 
 //console.log(this);  //outpu : {}
 
+// const Test =function(){
+//     username: "shravan";
+//     console.log(this);
+// }
 
+// const Test =()=> {
+//     username: "shravan";
+//     console.log(this);
+// }
+
+//Test();
