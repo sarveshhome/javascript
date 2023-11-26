@@ -27,6 +27,8 @@ const user= {
 // user.username ="gopal";
 // user.displayInfo();
 
+
+
 //console.log(this);  //outpu : {}
 
 // const Test =function(){
@@ -53,7 +55,7 @@ const user= {
 
 
 //Implicit Return, single line
-//const Test= (nubmer1, number2)=> (nubmer1 + number2)
+const Test= (nubmer1, number2)=> (nubmer1 + number2)
 
 // parenthesis use in react
 //Note: if you use {}  then return must be use,,,other wise use parenthesis
@@ -67,6 +69,10 @@ const user= {
 //const Test= (nubmer1, number2)=> {nubmer1 + number2}   //undefined
 
 //Implicit Return, Issue retrun Object
-const Test= (nubmer1, number2) => ({ value: nubmer1 + number2 })
+//const Test= (nubmer1, number2) => ({ value: nubmer1 + number2 })
+
+//const Test= (nubmer1, number2) => ([{ value: nubmer1 + number2 },{valueTwo: number2 + nubmer1}]);
 
 console.log(Test(7,9));
+
+console.table([Test(2,4),Test(3,7)]);
