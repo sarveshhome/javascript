@@ -17,3 +17,4 @@ accountCity ="Delhi"
 let accountState;
 
 console.table([accountId,accountEmail,accountPassowrd,accountState]);
+
